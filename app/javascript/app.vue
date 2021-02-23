@@ -5,7 +5,6 @@
         {{ memo.title }} : {{ memo.description }}
       </li>
     </ul>
-    [
   </div>
 </template>
 
