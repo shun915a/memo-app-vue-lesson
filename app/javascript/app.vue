@@ -1,27 +1,32 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <ul>
+      <li v-for="memo in memos" :key="memo.id">
+        {{ memo.title }} : {{ memo.description }}
+      </li>
+    </ul>
+    [
   </div>
 </template>
 
 <script>
-  import axios from 'axios';
+import axios from "axios";
 
 export default {
-  data: function () {
+  data: function() {
     return {
-      memos: "memos"
-    }
+      memos: "memos",
+    };
+  },
+  mounted() {
+    this.setMemo();
   },
   methods: {
     setMemo: function() {
-      axios.get('/api/memos')
-      .then(response => (
-        this.memos => response.data
-      ))
-    }
-  }
-}
+      axios.get("/api/memos").then((response) => (this.memos = response.data));
+    },
+  },
+};
 </script>
 
 <style scoped>
